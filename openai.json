@@ -1,5 +1,54 @@
 {
-  "openai": {
-    "schema": "..."
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Dice Roll API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://dice.padhub.xyz"
+    }
+  ],
+  "paths": {
+    "/roll/{num}/{sides}": {
+      "get": {
+        "summary": "Rolls a dice",
+        "parameters": [
+          {
+            "name": "num",
+            "in": "path",
+            "required": true,
+            "description": "Number of dice to roll",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sides",
+            "in": "path",
+            "required": true,
+            "description": "Number of sides on the dice",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
