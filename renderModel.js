@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
-const { WebGLRenderer, Scene, PerspectiveCamera, Mesh, MeshBasicMaterial, BoxGeometry, Color } = require('three');
+const { WebGLRenderer, Scene, PerspectiveCamera } = require('three');
+const GLTFLoader = require('three-gltf-loader');
 
 async function renderGLBtoPNG(glbPath, outputPath) {
     const browser = await puppeteer.launch();
@@ -13,13 +14,13 @@ async function renderGLBtoPNG(glbPath, outputPath) {
         </html>
     `);
     await page.evaluate(async (glbPath) => {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
+        const scene = new Scene();
+        const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById('scene-container').appendChild(renderer.domElement);
 
-        const gltfLoader = new THREE.GLTFLoader();
+        const gltfLoader = new GLTFLoader();
         const glb = await gltfLoader.loadAsync(glbPath);
         scene.add(glb.scene);
 
