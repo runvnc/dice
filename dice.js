@@ -13,7 +13,7 @@ app.get('/roll/:num/:sides', async (req, res) => {
         // Assuming 'model.glb' is the path to your GLB file and 'output.png' is the desired output PNG file.
         const renderModel = require('./renderModel');
         try {
-            await renderModel.renderGLBtoPNG('model.glb', 'output.png');
+            await renderModel.renderGLBtoPNG('d20.glb', 'output.png');
             res.sendFile('output.png', { root: __dirname });
         } catch (error) {
             console.error('Error rendering GLB to PNG:', error);
