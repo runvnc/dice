@@ -25,6 +25,7 @@ app.get('/roll/:num/:sides', async (req, res) => {
     }
 });
 
+app.use(express.static('static'));
 app.use('/privacy', express.static('privacy-policy.txt'));
 
 app.listen(port, () => {
