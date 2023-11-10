@@ -9,6 +9,7 @@ app.get('/roll/:num/:sides', (req, res) => {
     for(let i=0; i<num; i++){
         result.push(Math.floor(Math.random() * sides) + 1);
     }
+    console.log({num, sides, result})
     res.json(result);
 });
 
