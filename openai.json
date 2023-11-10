@@ -12,6 +12,7 @@
   "paths": {
     "/roll/{num}/{sides}": {
       "get": {
+        "operationId": "rollDice",
         "summary": "Rolls a dice",
         "parameters": [
           {
