@@ -1,6 +1,6 @@
-const puppeteer = require('puppeteer');
-const { WebGLRenderer, Scene, PerspectiveCamera } = require('three');
-const { GLTFLoader } = require('three/examples/jsm/loaders/GLTFLoader.js');
+import puppeteer from 'puppeteer';
+import { WebGLRenderer, Scene, PerspectiveCamera } from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 async function renderGLBtoPNG(glbPath, outputPath) {
     const browser = await puppeteer.launch();
@@ -41,4 +41,4 @@ async function renderGLBtoPNG(glbPath, outputPath) {
     return imageBuffer;
 }
 
-module.exports = { renderGLBtoPNG };
+export { renderGLBtoPNG };
