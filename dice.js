@@ -12,6 +12,8 @@ app.get('/roll/:num/:sides', (req, res) => {
     res.json(result);
 });
 
+app.use('/privacy', express.static('privacy-policy.txt'));
+
 app.listen(port, () => {
     console.log(`Server is running at http://127.0.0.1:${port}`);
 });
