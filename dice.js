@@ -1,4 +1,6 @@
 import express from 'express';
+import { renderGLBtoPNG } from './renderModel.js';
+
 const app = express();
 const port = 6001;
 
@@ -10,10 +12,8 @@ app.get('/roll/:num/:sides', async (req, res) => {
         result.push(Math.floor(Math.random() * sides) + 1);
     }
     if (req.query.render) {
-        // Assuming 'model.glb' is the path to your GLB file and 'output.png' is the desired output PNG file.
-        import { renderGLBtoPNG } from './renderModel.js';
         try {
-            await renderModel.renderGLBtoPNG('d20.glb', 'output.png');
+            await renderGLBtoPNG('d20.glb', 'output.png');
             res.sendFile('output.png', { root: __dirname });
         } catch (error) {
             console.error('Error rendering GLB to PNG:', error);
