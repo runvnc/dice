@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const { WebGLRenderer, Scene, PerspectiveCamera } = require('three');
-const GLTFLoader = require('three-gltf-loader');
+const { GLTFLoader } = require('three/examples/jsm/loaders/GLTFLoader');
 
 async function renderGLBtoPNG(glbPath, outputPath) {
     const browser = await puppeteer.launch();
